@@ -363,18 +363,103 @@ a:hover {
 }
 
 .hook-lede {
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
   font-size: 1.0625rem;
   color: var(--text-soft);
   font-weight: 500;
   line-height: 1.55;
 }
 
-.hook-body {
+.hook-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "rates"
+    "hours"
+    "notes";
+  gap: 1.25rem;
   margin: 0 0 1.5rem;
+}
+
+.hook-detail-rates {
+  grid-area: rates;
+}
+
+.hook-detail-hours {
+  grid-area: hours;
+}
+
+.hook-detail-notes {
+  grid-area: notes;
+}
+
+.hook-detail-title {
+  margin: 0 0 0.65rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.6;
+}
+
+.hook-mini-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border-muted);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.hook-mini-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.65rem 1rem;
+  align-items: baseline;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--border-muted);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+
+.hook-mini-list li:last-child {
+  border-bottom: none;
+}
+
+.hook-line-label {
+  min-width: 0;
+}
+
+.hook-line-value {
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.hook-accent-days,
+.hook-accent-price {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hook-good-list {
+  margin: 0;
+  padding: 0.35rem 0 0.35rem 1.15rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.hook-good-list li {
+  margin: 0.35rem 0;
+  padding-left: 0.15rem;
+}
+
+.hook-good-list li::marker {
+  color: var(--accent);
 }
 
 /* Visit */
@@ -625,8 +710,9 @@ a:hover {
   text-align: center;
 }
 
-/* Keep primary nav on one row: default 1.5rem column gap is too wide on phones */
+/* Phones: tight nav + simulator copy under image, comfortable reading */
 @media (max-width: 767px) {
+  /* Keep primary nav on one row: default 1.5rem column gap is too wide on phones */
   .nav {
     gap: 0.5rem;
     padding-left: 0.75rem;
@@ -655,6 +741,59 @@ a:hover {
   .tap-target-logo {
     padding: 0.35rem;
     margin: -0.35rem 0.12rem -0.35rem -0.35rem;
+  }
+
+  .hook-section {
+    padding: 2.25rem 1.25rem 2.75rem;
+  }
+
+  .hook-split {
+    gap: 1.5rem;
+  }
+
+  .hook-copy {
+    padding: 0 0.15rem 0.25rem;
+    line-height: 1.65;
+  }
+
+  .hook-copy h2 {
+    line-height: 1.18;
+    margin-bottom: 0.85rem;
+  }
+
+  .hook-lede {
+    line-height: 1.68;
+    margin-bottom: 1.35rem;
+    font-size: 1rem;
+  }
+
+  .hook-details {
+    gap: 1.35rem;
+    margin-bottom: 1.65rem;
+  }
+
+  .hook-detail-title {
+    margin-bottom: 0.55rem;
+  }
+
+  .hook-mini-list li {
+    padding: 0.7rem 0.9rem;
+    line-height: 1.5;
+  }
+
+  .hook-line-value {
+    white-space: normal;
+    text-align: right;
+  }
+
+  .hook-good-list {
+    line-height: 1.62;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .hook-good-list li {
+    margin: 0.45rem 0;
   }
 }
 
@@ -689,7 +828,15 @@ a:hover {
   .hook-split {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
+  }
+
+  .hook-details {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "rates hours"
+      "notes notes";
+    gap: 1.15rem 1.35rem;
   }
 
   .visit-grid {
